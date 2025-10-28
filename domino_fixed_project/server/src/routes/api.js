@@ -1,8 +1,10 @@
 import { Router } from 'express'
+
+import { healthController } from "../controllers"
 import { newMatch, getState, postMove, postDraw, postPass, postBotLocal, postBotOpenAI } from '../controllers/gameController.js'
 
 export const router = Router()
-router.get('/health', (_req,res)=>res.json({ok:true}))
+router.get('/health', healthController)
 router.post('/new', newMatch)
 router.get('/state/:matchId', getState)
 router.post('/move', postMove)

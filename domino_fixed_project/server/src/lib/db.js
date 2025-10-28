@@ -1,17 +1,32 @@
 import mongoose from 'mongoose'
-import { config } from '../config/index.js'
+import signale from 'signale'
 
-export async function connectDB(){
-  const uri = config.mongoUri
+import { CONFIG } from '../config'
+
+// connect to the mongo
+export async function mongoConnect(){
+  const uri = CONFIG.mongoUri
   mongoose.set('strictQuery', true)
   try{
     await mongoose.connect(uri, {
       serverSelectionTimeoutMS: 5000,
       autoIndex: true
     })
-    console.log('[db] connected to', uri)
+    signale.info('[DB] connected to', uri)
   }catch(e){
-    console.error('[db] connection error:', e.message)
+    signale.error('[DB] connection error:', e.message)
     throw e
   }
+}
+
+// close connection to mongo database
+export const mongoDisconnect = async () => {
+    try {
+        if (mongoose.connection.readyState) {
+            await mongoose.disconnect()
+            signale.info("[DB] mongo connection closed successfully")
+        }
+    } catch (e) {
+        signale.error("[DB] cannot disconnect mongo")
+    }
 }
