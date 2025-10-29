@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import SetupForm from '../components/SetupForm.jsx'
-import Controls from '../components/Controls.jsx'
-import BoardView from '../components/BoardView.jsx'
-import HandPanel from '../components/HandPanel.jsx'
-import HistoryPanel from '../components/HistoryPanel.jsx'
-import { newGame, state, move, draw, passApi, botSuggestHeuristic, botSuggestOpenAI } from '../api.js'
+import  { useState, useEffect } from 'react'
 
-export default function App(){
+import { SetupForm, Controls,  BoardView, HandPanel, HistoryPanel}  from '../components'
+// import { newGame, state, move, draw, passApi, botSuggestHeuristic, botSuggestOpenAI } from '../api.js'
+
+export default function Home(){
   const [matchId, setMatchId] = useState(null)
   const [game, setGame] = useState(null)
   const [me, setMe] = useState(0)
@@ -22,7 +19,6 @@ export default function App(){
     }, 800)
     return ()=>clearInterval(t)
   }, [matchId])
-
   async function start(players){
     try {
       const r = await newGame({ players });
