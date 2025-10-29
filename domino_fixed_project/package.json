@@ -1,0 +1,14 @@
+{
+  "name": "domino-site",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "setup": "npm --prefix server i && npm --prefix client i",
+    "dev": "node start.mjs",
+    "build": "npm --prefix client run build && npm --prefix server run build",
+    "start": "node start.mjs"
+  }
+}
