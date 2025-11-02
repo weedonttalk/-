@@ -1,0 +1,117 @@
+.domino-tile {
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  border-radius: 6px;
+  padding: 8px 6px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  min-width: 50px;
+  border: 2px solid #333;
+  transition: all 0.3s;
+}
+
+.domino-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.domino-half {
+  width: 20px;
+  height: 40px;
+  background: #fafafa;
+  border-radius: 3px;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding: 3px;
+}
+
+.domino-divider {
+  width: 2px;
+  height: 40px;
+  background: #333;
+  border-radius: 1px;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  background: #222;
+  border-radius: 50%;
+  position: absolute;
+}
+
+/* Dot positions in 3x3 grid */
+.pos-0 {
+  top: 4px;
+  left: 4px;
+}
+
+.pos-1 {
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.pos-2 {
+  top: 4px;
+  right: 4px;
+}
+
+.pos-3 {
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+}
+
+.pos-4 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pos-5 {
+  top: 50%;
+  right: 4px;
+  transform: translateY(-50%);
+}
+
+.pos-6 {
+  bottom: 4px;
+  left: 4px;
+}
+
+.pos-7 {
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.pos-8 {
+  bottom: 4px;
+  right: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .domino-tile {
+    min-width: 40px;
+    padding: 6px 4px;
+  }
+
+  .domino-half {
+    width: 16px;
+    height: 32px;
+  }
+
+  .domino-divider {
+    height: 32px;
+  }
+
+  .dot {
+    width: 4px;
+    height: 4px;
+  }
+}
